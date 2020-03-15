@@ -1,0 +1,34 @@
+.main
+  .main__group
+    %ul
+      %li.main_mane
+        ここにグループ名
+        %p.main_mane__user
+          yuri
+      %li.main_edit
+        =link_to "#", class: "edit_btn" do
+          Edit
+  .main__message
+    %ul.message
+      %li.message_user
+        名前
+      %li.message_date
+        日時
+    .message_chat
+      内容
+    %ul.message
+      %li.message_user
+        名前
+      %li.message_date
+        日時
+    .message_chat
+      内容
+
+  .main__from
+    %from.new_message
+      .input_box
+        %input{type: "text", class: "input_box__text", placeholder: "メッセージを入力"}
+        %label{class: "input_box__image"}
+          = icon('far', 'image')
+          %input{type: "file", class: "input_box__image--file"}
+      %input{type: "submit", class: "submit_btn"}
