@@ -5,21 +5,17 @@
         = current_user.name
       %ul.said_top__list
         %li.said_top__list--edit
-        = link_to "#" do
+        = link_to new_group_path do
           = icon('far', 'edit')
         %li.said_top__list--cog
-        = link_to edit_user_path(current_user) do
+        = link_to edit_user_path(current_user.id) do
           = icon('fas', 'cog')
 
   .side_groups
-    .group
-      %p.group__name
-        テスト
-      %p.group__message
-        まだないよ
-    .group
-      %p.group__name
-        テスト
-      %p.group__message
-        まだないよ
-     
+    - current_user.groups.each do |group|
+      .group
+        = link_to edit_group_path(group.id) do
+          .group__name
+            = group.name
+          .group__message
+            まだないよ
