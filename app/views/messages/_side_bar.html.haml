@@ -14,8 +14,8 @@
   .side_groups
     - current_user.groups.each do |group|
       .group
-        = link_to edit_group_path(group.id) do
+        = link_to group_messages_path(group) do
           .group__name
             = group.name
           .group__message
-            まだないよ
+            = group.show_last_message

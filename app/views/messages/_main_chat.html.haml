@@ -1,34 +1,24 @@
 .main
   .main__group
-    %ul
+    %ul   
       %li.main_mane
-        ここにグループ名
+        = @group.name
         %p.main_mane__user
-          yuri
+          Membar
+          - @group.users.each do |user|
+            = user.name
       %li.main_edit
-        =link_to "#", class: "edit_btn" do
+        = link_to edit_group_path(@group), class: "edit_btn" do
           Edit
-  .main__message
-    %ul.message
-      %li.message_user
-        名前
-      %li.message_date
-        日時
-    .message_chat
-      内容
-    %ul.message
-      %li.message_user
-        名前
-      %li.message_date
-        日時
-    .message_chat
-      内容
 
+  .main__message
+    = render @messages 
+  
   .main__from
-    %from.new_message
-      .input_box
-        %input{type: "text", class: "input_box__text", placeholder: "メッセージを入力"}
-        %label{class: "input_box__image"}
+    = form_for [@group, @message] do |f|
+      = f.text_field :body, class: 'new_message__text', placeholder: 'メッセージを入力'
+      .input_box_list
+        = f.label :image, class: 'new_message__image' do
           = icon('far', 'image')
-          %input{type: "file", class: "input_box__image--file"}
-      %input{type: "submit", class: "submit_btn"}
+          = f.file_field :image, class: 'new_message__image--file'
+      = f.submit 'Send', class: 'submit_btn'
