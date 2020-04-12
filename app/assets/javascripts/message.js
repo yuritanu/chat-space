@@ -53,7 +53,7 @@ $(function(){
         $.each(messages, function(i, message){
           insertHTML += buildHTML(message)
         });
-        $('.main__message-list').append(insertHTML);
+        $('.main__message').append(insertHTML);
         $('.main__message-list').animate({scrollTop: $('.main__message-list')[0].scrollHeight});
       }
     })
